@@ -1,7 +1,8 @@
 //number 5
 //memory could be doing solving puzzles-->to recreate this memory, I made an interactive puzzle
 
-float puzzlex1;
+//puzzle pieces are numbered 1-16, left to right, top to bottom
+float puzzlex1;//these will be for the coordiantes of the puzzle pieces
 float puzzlex2;
 float puzzlex3;
 float puzzlex4;
@@ -33,7 +34,7 @@ float puzzley13;
 float puzzley14;
 float puzzley15;
 float puzzley16;
-PImage puzzle1;
+PImage puzzle1;//images for puzzle pieces
 PImage puzzle2;
 PImage puzzle3;
 PImage puzzle4;
@@ -49,12 +50,12 @@ PImage puzzle13;
 PImage puzzle14;
 PImage puzzle15;
 PImage puzzle16;
-int whichone;//so that the pieces don't stick together
+int whichone;//so that the pieces don't stick together-->otherwise, when you click and drag a puzzle piece and go over another puzzle piece, they stack and stick to each other
 
 
 void setup () {
   size (900, 800);
-  puzzle1=loadImage ("puzzle1.PNG");
+  puzzle1=loadImage ("puzzle1.PNG");//loading puzzle images
   puzzle2=loadImage ("puzzle2.PNG");
   puzzle3=loadImage ("puzzle3.PNG");
   puzzle4=loadImage ("puzzle4.PNG");
@@ -70,7 +71,7 @@ void setup () {
   puzzle14=loadImage ("puzzle14.PNG");
   puzzle15=loadImage ("puzzle15.PNG");
   puzzle16=loadImage ("puzzle16.PNG");
-  puzzlex1 =random (50, 750);
+  puzzlex1 =random (50, 750);//these all set the puzzle pieces to random locations
   puzzlex2=random (50, 750);
   puzzlex3=random (50, 750);
   puzzlex4=random (50, 750);
@@ -107,19 +108,27 @@ void setup () {
 
 void draw () {
   background (0);
-  restart (750, 720);
+  for (int i=0; i<500; i+=10) {//generating random stars that flicker
+    fill (255);
+    noStroke ();
+    circle (random (0, 900), random (0, 800), random (0, 5));
+  }
+  restart (750, 50);//restart button
   println (mouseX, mouseY);
-  //puzzle1 (puzzlex1, puzzley1);
-  imageMode (CENTER);
+  noFill ();
+  stroke (255);
+  strokeWeight (3);
+  rect (50, 170, 460, 460);//this is the square that the puzzle will fit in
+  imageMode (CENTER);//these are all the puzzle pieces
   image (puzzle1, puzzlex1, puzzley1, 190, 190);
   image (puzzle2, puzzlex2, puzzley2, 190, 190);
   image (puzzle3, puzzlex3, puzzley3, 190, 190);
-  image (puzzle4, puzzlex4, puzzley4, 170, 190);
-  image (puzzle5, puzzlex5, puzzley5, 170, 190);
-  image (puzzle6, puzzlex6, puzzley6, 170, 190);
-  image (puzzle7, puzzlex7, puzzley7, 170, 190);
-  image (puzzle8, puzzlex8, puzzley8, 170, 190);
-  image (puzzle9, puzzlex9, puzzley9, 170, 190);
+  image (puzzle4, puzzlex4, puzzley4, 190, 190);
+  image (puzzle5, puzzlex5, puzzley5, 190, 190);
+  image (puzzle6, puzzlex6, puzzley6, 190, 190);
+  image (puzzle7, puzzlex7, puzzley7, 190, 190);
+  image (puzzle8, puzzlex8, puzzley8, 190, 190);
+  image (puzzle9, puzzlex9, puzzley9, 190, 190);
   image (puzzle10, puzzlex10, puzzley10, 190, 190);
   image (puzzle11, puzzlex11, puzzley11, 190, 190);
   image (puzzle12, puzzlex12, puzzley12, 190, 190);
@@ -133,7 +142,7 @@ void restart (int x, int y) {//restart button
   pushMatrix ();
     translate (x, y);
     strokeWeight (5);
-    if (mouseX>745 && mouseX<855 && mouseY>715&& mouseY<765) {
+    if (mouseX>745 && mouseX<855 && mouseY>45 && mouseY<95) {//tactile button
       stroke (255, 0, 0);
     } else {
       stroke (255);
@@ -147,7 +156,7 @@ void restart (int x, int y) {//restart button
 }
 
 void mousePressed () {
-  if (mouseX>750 && mouseX<850 && mouseY>720 && mouseY<760) {//if you press the restart button, resetss to random location
+  if (mouseX>750 && mouseX<850 && mouseY>45 && mouseY<95) {//if you press the restart button, resets to random location
     puzzlex1 =random (95, 805);
     puzzlex2=random (95, 805);
     puzzlex3=random (95, 805);
@@ -234,8 +243,71 @@ void mousePressed () {
   }
 }
 
-void mouseReleased () {
-  
+void mouseReleased () {//when the puzzle piece approaches the correct spot and you release the mouse, the piece snaps into place--> ordered from 1-16
+  if (puzzlex1>50 && puzzlex1<165 && puzzley1>170 && puzzley1<285) {
+    puzzlex1=107;
+    puzzley1=227;
+  }
+  if (puzzlex2>165 && puzzlex2<280 && puzzley2>170 && puzzley2<285) {
+    puzzlex2=222;
+    puzzley2=227;
+  }
+  if (puzzlex3>280 && puzzlex3<395 && puzzley3>170 && puzzley3<285) {
+    puzzlex3=337;
+    puzzley3=227;
+  }
+  if (puzzlex4>395 && puzzlex4<510 && puzzley4>170 && puzzley4<285) {
+    puzzlex4=452;
+    puzzley4=227;
+  }
+  if (puzzlex5>50 && puzzlex5<165 && puzzley5>285 && puzzley5<400) {
+    puzzlex5=107;
+    puzzley5=342;
+  }
+  if (puzzlex6>165 && puzzlex6<280 && puzzley6>285 && puzzley6<400) {
+    puzzlex6=222;
+    puzzley6=342;
+  }
+  if (puzzlex7>280 && puzzlex7<395 && puzzley7>285 && puzzley7<400) {
+    puzzlex7=337;
+    puzzley7=342;
+  }
+  if (puzzlex8>395 && puzzlex8<510 && puzzley8>285 && puzzley8<400) {
+    puzzlex8=452;
+    puzzley8=342;
+  }
+  if (puzzlex9>50 && puzzlex9<165 && puzzley9>400 && puzzley9<515) {
+    puzzlex9=107;
+    puzzley9=457;
+  }
+  if (puzzlex10>165 && puzzlex10<280 && puzzley10>400 && puzzley10<515) {
+    puzzlex10=222;
+    puzzley10=457;
+  }
+  if (puzzlex11>280 && puzzlex11<395 && puzzley11>400 && puzzley11<515) {
+    puzzlex11=337;
+    puzzley11=457;
+  }
+  if (puzzlex12>395 && puzzlex12<510 && puzzley12>400 && puzzley12<515) {
+    puzzlex12=452;
+    puzzley12=457;
+  }
+  if (puzzlex13>50 && puzzlex13<165 && puzzley13>515 && puzzley13<630) {
+    puzzlex13=107;
+    puzzley13=572;
+  }
+  if (puzzlex14>165 && puzzlex14<280 && puzzley14>515 && puzzley14<630) {
+    puzzlex14=222;
+    puzzley14=572;
+  }
+  if (puzzlex15>280 && puzzlex15<395 && puzzley15>515 && puzzley15<630) {
+    puzzlex15=337;
+    puzzley15=572;
+  }
+  if (puzzlex16>395 && puzzlex16<510 && puzzley16>515 && puzzley16<630) {
+    puzzlex16=452;
+    puzzley16=572;
+  }
 }
 
 void mouseDragged () {
@@ -305,4 +377,6 @@ void mouseDragged () {
   }
 }
 
-//to do: fix weird stretching, tactile button, tactile puzzle pieces?
+//flash when you finish
+//move box up
+//make it so the puzzle pieces generate outside the box
