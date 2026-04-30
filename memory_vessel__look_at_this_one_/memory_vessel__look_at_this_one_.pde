@@ -54,7 +54,7 @@ int whichone;//so that the pieces don't stick together-->otherwise, when you cli
 
 
 void setup () {
-  size (900, 800);
+  size (1200, 600);
   puzzle1=loadImage ("puzzle1.PNG");//loading puzzle images
   puzzle2=loadImage ("puzzle2.PNG");
   puzzle3=loadImage ("puzzle3.PNG");
@@ -71,38 +71,7 @@ void setup () {
   puzzle14=loadImage ("puzzle14.PNG");
   puzzle15=loadImage ("puzzle15.PNG");
   puzzle16=loadImage ("puzzle16.PNG");
-  puzzlex1 =random (50, 750);//these all set the puzzle pieces to random locations
-  puzzlex2=random (50, 750);
-  puzzlex3=random (50, 750);
-  puzzlex4=random (50, 750);
-  puzzlex5=random (50, 750);
-  puzzlex6=random (50, 750);
-  puzzlex7=random (50, 750);
-  puzzlex8=random (50, 750);
-  puzzlex9=random (50, 750);
-  puzzlex10=random (50, 750);
-  puzzlex11=random (50, 750);
-  puzzlex12=random (50, 750);
-  puzzlex13=random (50, 750);
-  puzzlex14=random (50, 750);
-  puzzlex15=random (50, 750);
-  puzzlex16=random (50, 750);
-  puzzley1=random (50, 670);
-  puzzley2=random (50, 670);
-  puzzley3=random (50, 670);
-  puzzley4=random (50, 670);
-  puzzley5=random (50, 670);
-  puzzley6=random (50, 670);
-  puzzley7=random (50, 670);
-  puzzley8=random (50, 670);
-  puzzley9=random (50, 670);
-  puzzley10=random (50, 670);
-  puzzley11=random (50, 670);
-  puzzley12=random (50, 670);
-  puzzley13=random (50, 670);
-  puzzley14=random (50, 670);
-  puzzley15=random (50, 670);
-  puzzley16=random (50, 670);
+  random ();
 }
 
 
@@ -113,12 +82,12 @@ void draw () {
     noStroke ();
     circle (random (0, 900), random (0, 800), random (0, 5));
   }
-  restart (750, 50);//restart button
+  restart (50, 535);//restart button
   println (mouseX, mouseY);
   noFill ();
   stroke (255);
   strokeWeight (3);
-  rect (50, 170, 460, 460);//this is the square that the puzzle will fit in
+  rect (50, 50, 460, 460);//this is the square that the puzzle will fit in
   imageMode (CENTER);//these are all the puzzle pieces
   image (puzzle1, puzzlex1, puzzley1, 190, 190);
   image (puzzle2, puzzlex2, puzzley2, 190, 190);
@@ -142,7 +111,7 @@ void restart (int x, int y) {//restart button
   pushMatrix ();
     translate (x, y);
     strokeWeight (5);
-    if (mouseX>745 && mouseX<855 && mouseY>45 && mouseY<95) {//tactile button
+    if (mouseX>50 && mouseX<150 && mouseY>535 && mouseY<575) {//tactile button
       stroke (255, 0, 0);
     } else {
       stroke (255);
@@ -156,39 +125,8 @@ void restart (int x, int y) {//restart button
 }
 
 void mousePressed () {
-  if (mouseX>750 && mouseX<850 && mouseY>45 && mouseY<95) {//if you press the restart button, resets to random location
-    puzzlex1 =random (95, 805);
-    puzzlex2=random (95, 805);
-    puzzlex3=random (95, 805);
-    puzzlex4=random (95, 805);
-    puzzlex5=random (95, 805);
-    puzzlex6=random (95, 805);
-    puzzlex7=random (95, 805);
-    puzzlex8=random (95, 805);
-    puzzlex9=random (95, 805);
-    puzzlex10=random (95, 805);
-    puzzlex11=random (95, 805);
-    puzzlex12=random (95, 805);
-    puzzlex13=random (95, 805);
-    puzzlex14=random (95, 805);
-    puzzlex15=random (95, 805);
-    puzzlex16=random (95, 805);
-    puzzley1=random (95, 625);
-    puzzley2=random (95, 625);
-    puzzley3=random (95, 625);
-    puzzley4=random (95, 625);
-    puzzley5=random (95, 625);
-    puzzley6=random (95, 625);
-    puzzley7=random (95, 625);
-    puzzley8=random (95, 625);
-    puzzley9=random (95, 625);
-    puzzley10=random (95, 625);
-    puzzley11=random (95, 625);
-    puzzley12=random (95, 625);
-    puzzley13=random (95, 625);
-    puzzley14=random (95, 625);
-    puzzley15=random (95, 625);
-    puzzley16=random (95, 625);
+  if (mouseX>50 && mouseX<150 && mouseY>535 && mouseY<575) {//if you press the restart button, resets to random location
+    random ();
   }
     
     
@@ -243,70 +181,106 @@ void mousePressed () {
   }
 }
 
+void random () {
+  puzzlex1 =random (610, 1100);
+  puzzlex2=random (610, 1100);
+  puzzlex3=random (610, 1100);
+  puzzlex4=random (610, 1100);
+  puzzlex5=random (610, 1100);
+  puzzlex6=random (610, 1100);
+  puzzlex7=random (610, 1100);
+  puzzlex8=random (610, 1100);
+  puzzlex9=random (610, 1100);
+  puzzlex10=random (610, 1100);
+  puzzlex11=random (610, 1100);
+  puzzlex12=random (610, 1100);
+  puzzlex13=random (610, 1100);
+  puzzlex14=random (610, 1100);
+  puzzlex15=random (610, 1100);
+  puzzlex16=random (610, 1100);
+  puzzley1=random (90, 510);
+  puzzley2=random (90, 510);
+  puzzley3=random (90, 510);
+  puzzley4=random (90, 510);
+  puzzley5=random (90, 510);
+  puzzley6=random (90, 510);
+  puzzley7=random (90, 510);
+  puzzley8=random (90, 510);
+  puzzley9=random (90, 510);
+  puzzley10=random (90, 510);
+  puzzley11=random (90, 510);
+  puzzley12=random (90, 510);
+  puzzley13=random (90, 510);
+  puzzley14=random (90, 510);
+  puzzley15=random (90, 510);
+  puzzley16=random (90, 510);
+}
+
 void mouseReleased () {//when the puzzle piece approaches the correct spot and you release the mouse, the piece snaps into place--> ordered from 1-16
-  if (puzzlex1>50 && puzzlex1<165 && puzzley1>170 && puzzley1<285) {
+//120
+  if (puzzlex1>50 && puzzlex1<165 && puzzley1>50 && puzzley1<165) {
     puzzlex1=107;
-    puzzley1=227;
+    puzzley1=107;
   }
-  if (puzzlex2>165 && puzzlex2<280 && puzzley2>170 && puzzley2<285) {
+  if (puzzlex2>165 && puzzlex2<280 && puzzley2>50 && puzzley2<165) {
     puzzlex2=222;
-    puzzley2=227;
+    puzzley2=107;
   }
-  if (puzzlex3>280 && puzzlex3<395 && puzzley3>170 && puzzley3<285) {
+  if (puzzlex3>280 && puzzlex3<395 && puzzley3>50 && puzzley3<165) {
     puzzlex3=337;
-    puzzley3=227;
+    puzzley3=107;
   }
-  if (puzzlex4>395 && puzzlex4<510 && puzzley4>170 && puzzley4<285) {
+  if (puzzlex4>395 && puzzlex4<510 && puzzley4>50 && puzzley4<165) {
     puzzlex4=452;
-    puzzley4=227;
+    puzzley4=107;
   }
-  if (puzzlex5>50 && puzzlex5<165 && puzzley5>285 && puzzley5<400) {
+  if (puzzlex5>50 && puzzlex5<165 && puzzley5>165 && puzzley5<280) {
     puzzlex5=107;
-    puzzley5=342;
+    puzzley5=222;
   }
-  if (puzzlex6>165 && puzzlex6<280 && puzzley6>285 && puzzley6<400) {
+  if (puzzlex6>165 && puzzlex6<280 && puzzley6>165 && puzzley6<280) {
     puzzlex6=222;
-    puzzley6=342;
+    puzzley6=222;
   }
-  if (puzzlex7>280 && puzzlex7<395 && puzzley7>285 && puzzley7<400) {
+  if (puzzlex7>280 && puzzlex7<395 && puzzley7>165 && puzzley7<280) {
     puzzlex7=337;
-    puzzley7=342;
+    puzzley7=222;
   }
-  if (puzzlex8>395 && puzzlex8<510 && puzzley8>285 && puzzley8<400) {
+  if (puzzlex8>395 && puzzlex8<510 && puzzley8>165 && puzzley8<280) {
     puzzlex8=452;
-    puzzley8=342;
+    puzzley8=222;
   }
-  if (puzzlex9>50 && puzzlex9<165 && puzzley9>400 && puzzley9<515) {
+  if (puzzlex9>50 && puzzlex9<165 && puzzley9>280 && puzzley9<395) {
     puzzlex9=107;
-    puzzley9=457;
+    puzzley9=337;
   }
-  if (puzzlex10>165 && puzzlex10<280 && puzzley10>400 && puzzley10<515) {
+  if (puzzlex10>165 && puzzlex10<280 && puzzley10>280 && puzzley10<395) {
     puzzlex10=222;
-    puzzley10=457;
+    puzzley10=337;
   }
-  if (puzzlex11>280 && puzzlex11<395 && puzzley11>400 && puzzley11<515) {
+  if (puzzlex11>280 && puzzlex11<395 && puzzley11>280 && puzzley11<395) {
     puzzlex11=337;
-    puzzley11=457;
+    puzzley11=337;
   }
-  if (puzzlex12>395 && puzzlex12<510 && puzzley12>400 && puzzley12<515) {
+  if (puzzlex12>395 && puzzlex12<510 && puzzley12>280 && puzzley12<395) {
     puzzlex12=452;
-    puzzley12=457;
+    puzzley12=337;
   }
-  if (puzzlex13>50 && puzzlex13<165 && puzzley13>515 && puzzley13<630) {
+  if (puzzlex13>50 && puzzlex13<165 && puzzley13>395 && puzzley13<510) {
     puzzlex13=107;
-    puzzley13=572;
+    puzzley13=452;
   }
-  if (puzzlex14>165 && puzzlex14<280 && puzzley14>515 && puzzley14<630) {
+  if (puzzlex14>165 && puzzlex14<280 && puzzley14>395 && puzzley14<510) {
     puzzlex14=222;
-    puzzley14=572;
+    puzzley14=452;
   }
-  if (puzzlex15>280 && puzzlex15<395 && puzzley15>515 && puzzley15<630) {
+  if (puzzlex15>280 && puzzlex15<395 && puzzley15>395 && puzzley15<510) {
     puzzlex15=337;
-    puzzley15=572;
+    puzzley15=452;
   }
-  if (puzzlex16>395 && puzzlex16<510 && puzzley16>515 && puzzley16<630) {
+  if (puzzlex16>395 && puzzlex16<510 && puzzley16>395 && puzzley16<510) {
     puzzlex16=452;
-    puzzley16=572;
+    puzzley16=452;
   }
 }
 
