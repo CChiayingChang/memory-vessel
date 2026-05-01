@@ -1,8 +1,8 @@
 //number 5
 //memory could be doing solving puzzles-->to recreate this memory, I made an interactive puzzle
 
-//puzzle pieces are numbered 1-16, left to right, top to bottom
-float puzzlex1;//these will be for the coordiantes of the puzzle pieces
+//puzzle pieces are numbered 1-16, left to right, top to bottom when it's solved
+float puzzlex1;//puzzle pieces x coordinates
 float puzzlex2;
 float puzzlex3;
 float puzzlex4;
@@ -18,7 +18,7 @@ float puzzlex13;
 float puzzlex14;
 float puzzlex15;
 float puzzlex16;
-float puzzley1;
+float puzzley1;//puzzle pieces y coordinates
 float puzzley2;
 float puzzley3;
 float puzzley4;
@@ -50,7 +50,9 @@ PImage puzzle13;
 PImage puzzle14;
 PImage puzzle15;
 PImage puzzle16;
-int whichone;//so that the pieces don't stick together-->otherwise, when you click and drag a puzzle piece and go over another puzzle piece, they stack and stick to each other
+float flashcounter;//for when you solve the puzzle--> will be for the screen flashing green
+int whichone;//one value for each puzle piece--> identifies which piece you're clicking on, so that the pieces don't stick together
+//otherwise, when you click and drag a puzzle piece and go over another puzzle piece, they stack and stick to each other
 
 
 void setup () {
@@ -71,7 +73,8 @@ void setup () {
   puzzle14=loadImage ("puzzle14.PNG");
   puzzle15=loadImage ("puzzle15.PNG");
   puzzle16=loadImage ("puzzle16.PNG");
-  random ();
+  random ();//this is the function for loading the puzzle pieces in random places
+  flashcounter=0;
 }
 
 
@@ -87,7 +90,7 @@ void draw () {
   noFill ();
   stroke (255);
   strokeWeight (3);
-  rect (50, 50, 460, 460);//this is the square that the puzzle will fit in
+  rect (50, 50, 460, 460);//this is the square that the puzzle will fit in-->area for puzzle solving
   imageMode (CENTER);//these are all the puzzle pieces
   image (puzzle1, puzzlex1, puzzley1, 190, 190);
   image (puzzle2, puzzlex2, puzzley2, 190, 190);
@@ -105,6 +108,19 @@ void draw () {
   image (puzzle14, puzzlex14, puzzley14, 190, 190);
   image (puzzle15, puzzlex15, puzzley15, 190, 190);
   image (puzzle16, puzzlex16, puzzley16, 190, 190);
+  if (puzzlex1==107 && puzzlex2==222 && puzzlex3==337 && puzzlex4==452 && puzzlex5==107 && puzzlex6==222 && puzzlex7==337 && puzzlex8==452
+  && puzzlex9==107 && puzzlex10==222 && puzzlex11==337 && puzzlex12==452 && puzzlex13==107 && puzzlex14==222 && puzzlex15==337 && puzzlex16==452) {
+    //if the puzzle pieces are all in the right position, screen flashes green and message with "you win" plays
+    //im only checking the x values for this bc im too lazy to type out all the y values too
+    flashcounter=flashcounter+1;
+    if (flashcounter==1 || flashcounter==3) {//the screen flashes green twice when you win
+      fill (0, 255, 0);
+      rect (0, 0, width, height);
+    }
+    textSize (200);
+    fill (255);
+    text ("You win!", 200, 350);
+  }
 }
 
 void restart (int x, int y) {//restart button
@@ -125,12 +141,13 @@ void restart (int x, int y) {//restart button
 }
 
 void mousePressed () {
-  if (mouseX>50 && mouseX<150 && mouseY>535 && mouseY<575) {//if you press the restart button, resets to random location
-    random ();
+  if (mouseX>50 && mouseX<150 && mouseY>535 && mouseY<575) {
+    random ();//if you press restart button, puzzle pieces reset to random location
+    flashcounter=0;//restarts flash counter for next win
   }
     
-    
 //if i dont add this, then whenever the pieces overlap while im moving them, they get stuck on top of one another and stack, and then the game isn't playable anymore
+//this helps separate the pieces, and identifies which one i'm pressing. this way they don't all merge into one puzzle piece
    if (mouseX>puzzlex1-95 && mouseX<puzzlex1+95 && mouseY>puzzley1-95 && mouseY<puzzley1+95) {
     whichone=1;
   }
@@ -181,7 +198,7 @@ void mousePressed () {
   }
 }
 
-void random () {
+void random () {//this resets the puzzle pieces in a random location (outside of play area)
   puzzlex1 =random (610, 1100);
   puzzlex2=random (610, 1100);
   puzzlex3=random (610, 1100);
@@ -216,7 +233,7 @@ void random () {
   puzzley16=random (90, 510);
 }
 
-void mouseReleased () {//when the puzzle piece approaches the correct spot and you release the mouse, the piece snaps into place--> ordered from 1-16
+void mouseReleased () {//when the puzzle piece approaches the correct spot and you release the mouse, the piece snaps into place--> ordered from 1-16, left to right, top to bottom
 //120
   if (puzzlex1>50 && puzzlex1<165 && puzzley1>50 && puzzley1<165) {
     puzzlex1=107;
@@ -284,7 +301,7 @@ void mouseReleased () {//when the puzzle piece approaches the correct spot and y
   }
 }
 
-void mouseDragged () {
+void mouseDragged () {//the puzzle pieces will follow the mouse
   if (mouseX>puzzlex1-95 && mouseX<puzzlex1+95 && mouseY>puzzley1-95 && mouseY<puzzley1+95 && whichone==1) {
     puzzlex1=mouseX;
     puzzley1=mouseY;
@@ -350,7 +367,3 @@ void mouseDragged () {
     puzzley16=mouseY;
   }
 }
-
-//flash when you finish
-//move box up
-//make it so the puzzle pieces generate outside the box
